@@ -1,0 +1,14 @@
+Sudo Code
+class MaxHeapPriorityQueue:
+    Initialize a max heap
+
+    function insert(element):
+        Add the element to the heap
+        Heapify-up to maintain the max heap property
+
+    function extractMax():
+        Remove the root of the heap (highest priority)
+        Replace the root with the last element in the heap
+        Heapify-down to maintain the max heap property
+        Return the original root
+
