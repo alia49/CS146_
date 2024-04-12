@@ -1,0 +1,43 @@
+
+Algorithm TopologicalSort(graph):
+    Input: graph, a directed graph with vertices numbered from 0 to V-1
+    Output: topOrder, a list of vertices in topologically sorted order
+
+    Initialize in_degree[V] to 0 for all vertices in the graph
+    Initialize queue
+    Initialize topOrder as an empty list
+
+    // Calculate in-degree (number of incoming edges) for each vertex
+    For each vertex u in graph:
+        For each vertex v in Adjacency List of u:
+            in_degree[v] = in_degree[v] + 1
+
+    // Enqueue all vertices with in-degree 0
+    For each vertex u in graph:
+        If in_degree[u] == 0:
+            Enqueue u in queue
+
+    // Initialize count of visited vertices
+    cnt = 0
+
+    While queue is not empty:
+        // Extract front of queue and add it to topOrder
+        u = Dequeue from queue
+        Add u to topOrder
+
+        // Decrease in-degree by 1 for all its neighboring nodes
+        For each vertex v in Adjacency List of u:
+            in_degree[v] = in_degree[v] - 1
+            // If in-degree becomes zero, add it to queue
+            If in_degree[v] == 0:
+                Enqueue v in queue
+
+        cnt = cnt + 1
+
+    // Check if there was a cycle
+    If cnt != V:
+        Print "There exists a cycle in the graph"
+        Return
+
+    // Print topological order
+    Print topOrder
