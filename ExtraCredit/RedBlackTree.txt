@@ -1,0 +1,43 @@
+
+Class Node:
+    Data Structure:
+        Integer data
+        Node left
+        Node right
+        Node parent
+        Boolean isRed
+
+    Constructor(data):
+        this.data = data
+        left = right = parent = NULL
+        isRed = true
+
+Class RedBlackTree:
+    Data Structure:
+        Node root
+
+    Constructor():
+        root = NULL
+
+    Method insert(data):
+        Create new Node with data
+        Initialize temporary Node 'temp' to NULL
+        Initialize 'curr' to root
+
+        While 'curr' is not NULL:
+            'temp' becomes 'curr'
+            If new Node's data is less than 'curr's data:
+                'curr' becomes 'curr's left child
+            Else:
+                'curr' becomes 'curr's right child
+
+        The parent of new Node becomes 'temp'
+
+        If 'temp' is NULL (tree was empty):
+            root becomes the new Node
+        Else if new Node's data is less than 'temp's data:
+            'temp's left child becomes the new Node
+        Else:
+            'temp's right child becomes the new Node
+
+        Call method to fix up the tree after insertion (not implemented
